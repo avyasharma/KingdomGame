@@ -5,20 +5,233 @@ from firebase_admin import db
 
 # This is for initializing the application and credentials with the private encryption skinnymonkey
 # Replace the file path in the function call below with the file path of the encryption key file [.json] as it appears on your computer
-cred = credentials.Certificate("/Users/skinnymonkey/Documents/KingdomGame/kingdom-game-b900c-firebase-adminsdk-1cb4e-1156792b58.json")
+filePaths = ["/Users/avi/Desktop/KingdomGame/kingdom-game-b900c-firebase-adminsdk-1cb4e-132b5dc6ca.json", "/Users/skinnymonkey/Documents/KingdomGame/kingdom-game-b900c-firebase-adminsdk-1cb4e-1156792b58.json"]
+cred = credentials.Certificate(filePaths[0])
 default_app = firebase_admin.initialize_app(cred, {'databaseURL':'https://kingdom-game-b900c.firebaseio.com/'})
 
 # This is just to establish Admin Privileges [don't worry about this guys]
 restricted_ref = db.reference('restricted_access/secret_document')
 
 #The following Code is Purely for the Sprite Says "Hello" Project
-read_ref = db.reference('sprite_says_hello')
+"""read_ref = db.reference('sprite_says_hello')
 
 while True:
-    word = str(raw_input("Enter a word: "))
+    word = str(input("Enter a word: "))
     if word == "kill":  # Use this to stop loop
         break
     else:
         new_str = "Hello " + word
         data_to_upload = {'Word': new_str}
-        read_ref.set(data_to_upload)
+        read_ref.set(data_to_upload)"""
+
+#The following code is to load the classes into the database.
+class_ref = db.reference('class_attributes')
+
+class DistanceDemon:
+    def __init__(self, pos, username):
+        self.pos = pos
+        self.unit_level = 1
+        self.unit_points = 0
+        self.type_level = 1
+        self.type_points = 0
+        self.class_level = 0
+        self.class_points = 0
+        self.user_name = username
+        self.type = "typeless"
+        self.prereqs = "Base"
+        self.weapon_types = "Dark, Bow, Shuriken"
+        self.stats = {"PP": 2, "MP": 2, "PD": 2, "MD": 2, "HP": 2, "Sp": 4, "St": 3, "Mo": 5}
+
+    def toDict(self):
+        data_for_demon = {"Unit Level": self.unit_level,
+                          "Unit Points": self.unit_points,
+                          "Type Level": self.type_level,
+                          "Type Points": self.type_points,
+                          "Class Level": self.class_level,
+                          "Class Points": self.class_points,
+                          "Position": self.pos,
+                          "Username": self.user_name,
+                          "Type": self.type,
+                          "Pre-reqs": self.prereqs,
+                          "Weapon_types": self.weapon_types,
+                          "Stats": self.stats
+                          }
+        return data_for_demon
+
+class Powerhouse:
+    def __init__(self, pos, username):
+        self.pos = pos
+        self.unit_level = 1
+        self.unit_points = 0
+        self.type_level = 1
+        self.type_points = 0
+        self.class_level = 0
+        self.class_points = 0
+        self.user_name = username
+        self.type = "typeless"
+        self.prereqs = "Base"
+        self.weapon_types = "Light, Axe, Gauntlet"
+        self.stats = {"PP": 2, "MP": 2, "PD": 2, "MD": 2, "HP": 2, "Sp": 3, "St": 5, "Mo": 4}
+
+    def toDict(self):
+        data_for_powerhouse = {"Unit Level": self.unit_level,
+                          "Unit Points": self.unit_points,
+                          "Type Level": self.type_level,
+                          "Type Points": self.type_points,
+                          "Class Level": self.class_level,
+                          "Class Points": self.class_points,
+                          "Position": self.pos,
+                          "Username": self.user_name,
+                          "Type": self.type,
+                          "Pre-reqs": self.prereqs,
+                          "Weapon_types": self.weapon_types,
+                          "Stats": self.stats
+                          }
+        return data_for_powerhouse
+
+class Messenger:
+    def __init__(self, pos, username):
+        self.pos = pos
+        self.unit_level = 1
+        self.unit_points = 0
+        self.type_level = 1
+        self.type_points = 0
+        self.class_level = 0
+        self.class_points = 0
+        self.user_name = username
+        self.type = "Fire, Lance"
+        self.prereqs = "None"
+        self.weapon_types = "Fire, Lance, Bow"
+        self.stats = {"PP": 2, "MP": 2, "PD": 2, "MD": 2, "HP": 2, "Sp": 4, "St": 3, "Mo": 5}
+
+    def toDict(self):
+        data_for_messenger = {"Unit Level": self.unit_level,
+                          "Unit Points": self.unit_points,
+                          "Type Level": self.type_level,
+                          "Type Points": self.type_points,
+                          "Class Level": self.class_level,
+                          "Class Points": self.class_points,
+                          "Position": self.pos,
+                          "Username": self.user_name,
+                          "Type": self.type,
+                          "Pre-reqs": self.prereqs,
+                          "Weapon_types": self.weapon_types,
+                          "Stats": self.stats
+                          }
+        return data_for_messenger
+
+class Samurai:
+    def __init__(self, pos, username):
+        self.pos = pos
+        self.unit_level = 1
+        self.unit_points = 0
+        self.type_level = 1
+        self.type_points = 0
+        self.class_level = 0
+        self.class_points = 0
+        self.user_name = username
+        self.type = "Sword"
+        self.prereqs = "None"
+        self.weapon_types = "Sword, Shuriken"
+        self.stats = {"PP": 2, "MP": 2, "PD": 2, "MD": 2, "HP": 2, "Sp": 4, "St": 5, "Mo": 4}
+
+    def toDict(self):
+        data_for_samurai = {"Unit Level": self.unit_level,
+                          "Unit Points": self.unit_points,
+                          "Type Level": self.type_level,
+                          "Type Points": self.type_points,
+                          "Class Level": self.class_level,
+                          "Class Points": self.class_points,
+                          "Position": self.pos,
+                          "Username": self.user_name,
+                          "Type": self.type,
+                          "Pre-reqs": self.prereqs,
+                          "Weapon_types": self.weapon_types,
+                          "Stats": self.stats
+                          }
+        return data_for_samurai
+
+class DramaticHero:
+    def __init__(self, pos, username):
+        self.pos = pos
+        self.unit_level = 1
+        self.unit_points = 0
+        self.type_level = 1
+        self.type_points = 0
+        self.class_level = 0
+        self.class_points = 0
+        self.user_name = username
+        self.type = "Wind"
+        self.prereqs = "None"
+        self.weapon_types = "Wind, Gauntlet"
+        self.stats = {"PP": 2, "MP": 2, "PD": 2, "MD": 2, "HP": 2, "Sp": 5, "St": 7, "Mo": 6}
+
+    def toDict(self):
+        data_for_hero = {"Unit Level": self.unit_level,
+                          "Unit Points": self.unit_points,
+                          "Type Level": self.type_level,
+                          "Type Points": self.type_points,
+                          "Class Level": self.class_level,
+                          "Class Points": self.class_points,
+                          "Position": self.pos,
+                          "Username": self.user_name,
+                          "Type": self.type,
+                          "Pre-reqs": self.prereqs,
+                          "Weapon_types": self.weapon_types,
+                          "Stats": self.stats
+                          }
+        return data_for_hero
+
+class Mistifier:
+    def __init__(self, pos, username):
+        self.pos = pos
+        self.unit_level = 1
+        self.unit_points = 0
+        self.type_level = 1
+        self.type_points = 0
+        self.class_level = 0
+        self.class_points = 0
+        self.user_name = username
+        self.type = "Water, Wind"
+        self.prereqs = "Elemental"
+        self.weapon_types = "Water, Wind, Bow, Shuriken"
+        self.stats = {"PP": 2, "MP": 2, "PD": 2, "MD": 2, "HP": 2, "Sp": 4, "St": 3, "Mo": 5}
+
+    def toDict(self):
+        data_for_mistifier = {"Unit Level": self.unit_level,
+                          "Unit Points": self.unit_points,
+                          "Type Level": self.type_level,
+                          "Type Points": self.type_points,
+                          "Class Level": self.class_level,
+                          "Class Points": self.class_points,
+                          "Position": self.pos,
+                          "Username": self.user_name,
+                          "Type": self.type,
+                          "Pre-reqs": self.prereqs,
+                          "Weapon_types": self.weapon_types,
+                          "Stats": self.stats
+                          }
+        return data_for_mistifier
+
+def main():
+    dDemon = DistanceDemon(0, "N/A")
+
+    pHouse = Powerhouse(0, "N/A")
+
+    messenger = Messenger(0, "N/A")
+
+    samurai = Samurai(0, "N/A")
+
+    dramaticHero = DramaticHero(0, "N/A")
+
+    mistifier = Mistifier(0, "N/A")
+
+    class_ref.set({"Distance Demon": dDemon.toDict(),
+                   "Powerhouse": pHouse.toDict(),
+                   "Messenger": messenger.toDict(),
+                   "Samurai": samurai.toDict(),
+                   "Dramatic Hero": dramaticHero.toDict(),
+                   "Mistifier": mistifier.toDict()
+                   })
+
+main()
