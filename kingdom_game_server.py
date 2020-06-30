@@ -27,7 +27,7 @@ while True:
 #The following code is to load the classes into the database.
 class_ref = db.reference('class_attributes')
 
-class DistanceDemon:
+class Assassin:
     def __init__(self, pos, username):
         self.pos = pos
         self.unit_level = 1
@@ -43,7 +43,7 @@ class DistanceDemon:
         self.stats = {"PP": 2, "MP": 2, "PD": 2, "MD": 2, "HP": 2, "Sp": 4, "St": 3, "Mo": 5}
 
     def toDict(self):
-        data_for_demon = {"Unit Level": self.unit_level,
+        data_for_assassin = {"Unit Level": self.unit_level,
                           "Unit Points": self.unit_points,
                           "Type Level": self.type_level,
                           "Type Points": self.type_points,
@@ -56,9 +56,9 @@ class DistanceDemon:
                           "Weapon_types": self.weapon_types,
                           "Stats": self.stats
                           }
-        return data_for_demon
+        return data_for_assassin
 
-class Powerhouse:
+class Crusader:
     def __init__(self, pos, username):
         self.pos = pos
         self.unit_level = 1
@@ -74,7 +74,7 @@ class Powerhouse:
         self.stats = {"PP": 2, "MP": 2, "PD": 2, "MD": 2, "HP": 2, "Sp": 3, "St": 5, "Mo": 4}
 
     def toDict(self):
-        data_for_powerhouse = {"Unit Level": self.unit_level,
+        data_for_crusader = {"Unit Level": self.unit_level,
                           "Unit Points": self.unit_points,
                           "Type Level": self.type_level,
                           "Type Points": self.type_points,
@@ -87,7 +87,7 @@ class Powerhouse:
                           "Weapon_types": self.weapon_types,
                           "Stats": self.stats
                           }
-        return data_for_powerhouse
+        return data_for_crusader
 
 class Messenger:
     def __init__(self, pos, username):
@@ -214,9 +214,9 @@ class Mistifier:
         return data_for_mistifier
 
 def main():
-    dDemon = DistanceDemon(0, "N/A")
+    assassin = Assassin(0, "N/A")
 
-    pHouse = Powerhouse(0, "N/A")
+    crusader = Crusader(0, "N/A")
 
     messenger = Messenger(0, "N/A")
 
@@ -226,8 +226,8 @@ def main():
 
     mistifier = Mistifier(0, "N/A")
 
-    class_ref.set({"Distance Demon": dDemon.toDict(),
-                   "Powerhouse": pHouse.toDict(),
+    class_ref.set({"Assassin": assassin.toDict(),
+                   "Crusader": crusader.toDict(),
                    "Messenger": messenger.toDict(),
                    "Samurai": samurai.toDict(),
                    "Dramatic Hero": dramaticHero.toDict(),
