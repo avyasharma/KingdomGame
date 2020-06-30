@@ -1,3 +1,4 @@
+%This is for a test on committing files to the repository. Don't mind this file.
 function submit()
   addpath('./lib');
 
