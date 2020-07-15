@@ -5,7 +5,7 @@ from firebase_admin import db
 
 # This is for initializing the application and credentials with the private encryption skinnymonkey
 # Replace the file path in the function call below with the file path of the encryption key file [.json] as it appears on your computer
-filePaths = ["/Users/avi/Desktop/KingdomGame/kingdom-game-b900c-firebase-adminsdk-1cb4e-132b5dc6ca.json", "/Users/skinnymonkey/Documents/KingdomGame/kingdom-game-b900c-firebase-adminsdk-1cb4e-1156792b58.json"]
+filePaths = ["/Users/avi/Desktop/KingdomGame/kingdom-game-b900c-firebase-adminsdk-1cb4e-fcad7fd15b.json", "/Users/skinnymonkey/Documents/KingdomGame/kingdom-game-b900c-firebase-adminsdk-1cb4e-1156792b58.json"]
 cred = credentials.Certificate(filePaths[0])
 default_app = firebase_admin.initialize_app(cred, {'databaseURL':'https://kingdom-game-b900c.firebaseio.com/'})
 
@@ -217,13 +217,15 @@ class Mistifier:
 update_ref = db.reference('updates')
 
 def listener(event):
-    d = event.data.split()
+    d = event.data["Update"].split(" ")
     if d[0] == "POS":
         #keep in mind that this is the tester code right now. This will be replaced with the given user's position changing. For now, I want to test this out
         #and make sure that the conditionals work.
         print(event.event_type)
         print(event.path)
-        print(event.data)
+        print(event.data["Update"])
+    else:
+        pass
 
 def main():
     assassin = Assassin(0, "N/A")
@@ -246,7 +248,7 @@ def main():
                    "Mistifier": mistifier.toDict()
                    })
 
-    update_ref.set({"Update": "This is a placeholder."})
+    update_ref.set({"Update": "POS sexy piece of shit"})
     firebase_admin.db.reference('updates').listen(listener)
 
 
