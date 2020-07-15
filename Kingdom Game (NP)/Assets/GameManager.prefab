@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5341770479990785670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5341770479990785665}
+  - component: {fileID: 5341770479990785664}
+  - component: {fileID: 5341770479990785667}
+  - component: {fileID: 8893902956392039727}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5341770479990785665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341770479990785670}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5341770479990785664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341770479990785670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9612f043f984db8b392cc01c99021f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5341770479990785667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341770479990785670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc8a9fc6ff134dacbeb87367fb9932a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  className: 
+  crusaderPoints: 0
+  elementalPoints: 0
+  maxClassPoints: 5
+  isCrusaderMaxed: 0
+  isElementalMaxed: 0
+--- !u!114 &8893902956392039727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341770479990785670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4613ef755728140deb077b437d070f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: 
+  swordTypePoints: 0
+  lanceTypePoints: 0
+  axeTypePoints: 0
+  bowTypePoints: 0
+  gauntletTypePoints: 0
+  shurikenTypePoints: 0
+  fireTypePoints: 0
+  waterTypePoints: 0
+  windTypePoints: 0
+  plasmaTypePoints: 0
+  lightTypePoints: 0
+  darkTypePoints: 0
+  dragonTypePoints: 0
+  swordTypeLevel: 1
+  lanceTypeLevel: 1
+  axeTypeLevel: 1
+  bowTypeLevel: 1
+  gauntletTypeLevel: 1
+  shurikenTypeLevel: 1
+  fireTypeLevel: 1
+  waterTypeLevel: 1
+  windTypeLevel: 1
+  plasmaTypeLevel: 1
+  lightTypeLevel: 1
+  darkTypeLevel: 1
+  dragonTypeLevel: 1
+  level2Reqirement: 5
+  level3Reqirement: 10
+  level4Reqirement: 15
+  levelMaxReqirement: 20
