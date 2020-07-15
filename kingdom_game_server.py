@@ -213,6 +213,18 @@ class Mistifier:
                           }
         return data_for_mistifier
 
+#The following reference is for the updates from the front end. THIS INVOLVES THE LISTENER. NEED TO TEST.
+update_ref = db.reference('updates')
+
+def listener(event):
+    d = event.data.split()
+    if d[0] == "POS":
+        #keep in mind that this is the tester code right now. This will be replaced with the given user's position changing. For now, I want to test this out
+        #and make sure that the conditionals work.
+        print(event.event_type)
+        print(event.path)
+        print(event.data)
+
 def main():
     assassin = Assassin(0, "N/A")
 
@@ -233,5 +245,9 @@ def main():
                    "Dramatic Hero": dramaticHero.toDict(),
                    "Mistifier": mistifier.toDict()
                    })
+
+    update_ref.set({"Update": "This is a placeholder."})
+    firebase_admin.db.reference('updates').listen(listener)
+
 
 main()
