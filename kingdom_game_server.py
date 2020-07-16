@@ -217,15 +217,23 @@ class Mistifier:
 update_ref = db.reference('updates')
 
 def listener(event):
-    d = event.data["Update"].split(" ")
-    if d[0] == "POS":
-        #keep in mind that this is the tester code right now. This will be replaced with the given user's position changing. For now, I want to test this out
-        #and make sure that the conditionals work.
-        print(event.event_type)
-        print(event.path)
-        print(event.data["Update"])
-    else:
-        pass
+    d = event.data
+    if isinstance(d, dict):
+        if d["Update"].split(" ")[0] == "POS":
+            #keep in mind that this is the tester code right now. This will be replaced with the given user's position changing. For now, I want to test this out
+            #and make sure that the conditionals work.
+            print(event.event_type)
+            print(event.path)
+            print(event.data["Update"])
+        else:
+            pass
+    elif isinstance(d, str):
+        if d[0:3] == "POS":
+            print(event.event_type)
+            print(event.path)
+            print(event.data)
+        else:
+            pass
 
 def main():
     assassin = Assassin(0, "N/A")
